@@ -84,7 +84,7 @@ $('#btnSave').one("click", save)
   1. Use these input boxes to assign preference number to each station.
   1. Make sure there are no duplicate value. If there are, then the page will prompt you that there are 
   	invalid values present.
-  1. Make sure that all the values are between `0` and `(total number of stations) - 1` are present. If not, page 
+  1. Make sure that all the values between `0` and `(total number of stations) - 1` are present. If not, page 
   	will alert you that all ranks are not available.
   1. Save the form using `Save All Preferences` button.
   1. Re-visit the page again, and make sure all the changes are saved.
