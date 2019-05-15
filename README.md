@@ -2,6 +2,21 @@
 
 Instead of the old drag-n-drop, this script will provide you with text boxes to input the preference numbers.
 
+
+### How to use
+  1. Go to station preference page on psd site.
+  1. Open the console in developer tools of your browser (`Ctrl+Shift+i` for chrome).
+  1. Copy and paste the code below in the console. You can also use the save.js file present in this repo.
+  1. Text boxes will appear on page with current preference for each station.
+  1. Use these input boxes to assign preference number to each station.
+  1. Make sure there are no duplicate value. If there are, then the page will prompt you that there are 
+  	invalid values present.
+  1. Make sure that all the values between `0` and `(total number of stations) - 1` are present. If not, page 
+  	will alert you that all ranks are not available.
+  1. Save the form using `Save All Preferences` button.
+  1. Re-visit the page again, and make sure all the changes are saved.
+
+
 ### Code
 ```
 $("span[id|='spnRank']").each(function (i, el) {
@@ -75,16 +90,3 @@ function save() {
 }
 $('#btnSave').one("click", save)
 ```
-
-### How to use
-  1. Go to station preference page on psd site.
-  1. Open the console in developer tools of your browser (`Ctrl+Shift+i` for chrome).
-  1. Copy and paste the above code in the console. You can also use the save.js file present in this repo.
-  1. Text boxes will appear on page with current preference for each station.
-  1. Use these input boxes to assign preference number to each station.
-  1. Make sure there are no duplicate value. If there are, then the page will prompt you that there are 
-  	invalid values present.
-  1. Make sure that all the values between `0` and `(total number of stations) - 1` are present. If not, page 
-  	will alert you that all ranks are not available.
-  1. Save the form using `Save All Preferences` button.
-  1. Re-visit the page again, and make sure all the changes are saved.
