@@ -17,11 +17,13 @@ Instead of the old drag-n-drop, this script will provide you with text boxes to 
   1. Re-visit the page again, and make sure all the changes are saved.
 
 
-### UPDATE
+### UPDATE :smile:
 Now this script supports swapping of preference numbers !!!
 
 Suppose you have have `station A` on perference `5` and another `station B` on `190`. Now if you enter
 `5` against `station B`, preference of `station A` will automatically be updated to `190`.
+
+Make sure you press `Enter` after input for this swap to take place.
 
 
 ### Code
