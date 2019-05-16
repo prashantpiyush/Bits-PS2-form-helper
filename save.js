@@ -51,20 +51,43 @@ function save() {
 		jsondata += "},"
 	})
 	jsondata = jsondata.substr(0, jsondata.length - 1);
-		jsondata += "]";
+	jsondata += "]";
 
 
-		if ($('#consta').is(":checked")) {
-		    contistation = 1;
-		    jsonvalue += "'isActive':'1',"
-		    jsonvalue += "'ContinueStation':'"+ contistation+"',"
-		    jsonvalue = jsonvalue.substr(0, jsonvalue.length - 1);
-		    jsonvalue = '{' + jsonvalue + '}';
-		}
-		else {
-		    contistation = 0;
-
-		}
+	if ($('#consta').is(":checked")) {
+	    contistation = 1;
+	    jsonvalue += "'isActive':'1',"
+	    jsonvalue += "'ContinueStation':'"+ contistation+"',"
+	    jsonvalue = jsonvalue.substr(0, jsonvalue.length - 1);
+	    jsonvalue = '{' + jsonvalue + '}';
+	}
+	else {
+	    contistation = 0;
+	}
 	saveprefdata(jsondata, jsonvalue, contistation);
 }
 $('#btnSave').one("click", save)
+
+// swap preference numbers
+$('.prefRankByPP').each(function () {
+	$(this).data('val', $(this).val())
+})
+$('.prefRankByPP').change(function () {
+	preVal = $(this).data('val')
+	curVal = $(this).val()
+	b = false
+	ct = this
+	$('.prefRankByPP').each(function () {
+		swapVal = $(this).val()
+		if(swapVal == curVal && this != ct) {
+			$(this).val(preVal)
+			$(this).data('val', preVal)
+			b = true
+		}
+	})
+	if(!b) {
+		$(this).val(preVal)
+	} else {
+		$(this).data('val', $(this).val())
+    	}
+})
