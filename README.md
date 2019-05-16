@@ -17,6 +17,13 @@ Instead of the old drag-n-drop, this script will provide you with text boxes to 
   1. Re-visit the page again, and make sure all the changes are saved.
 
 
+### UPDATE
+Now this script supports swapping of preference numbers !!!
+
+Suppose you have have `station A` on perference `5` and another `station B` on `190`. Now if you enter
+`5` against `station B`, preference of `station A` will automatically be updated to `190`.
+
+
 ### Code
 ```
 $("span[id|='spnRank']").each(function (i, el) {
@@ -72,21 +79,44 @@ function save() {
 		jsondata += "},"
 	})
 	jsondata = jsondata.substr(0, jsondata.length - 1);
-		jsondata += "]";
+	jsondata += "]";
 
-
-		if ($('#consta').is(":checked")) {
-		    contistation = 1;
-		    jsonvalue += "'isActive':'1',"
-		    jsonvalue += "'ContinueStation':'"+ contistation+"',"
-		    jsonvalue = jsonvalue.substr(0, jsonvalue.length - 1);
-		    jsonvalue = '{' + jsonvalue + '}';
-		}
-		else {
-		    contistation = 0;
-
-		}
+	if ($('#consta').is(":checked")) {
+	    contistation = 1;
+	    jsonvalue += "'isActive':'1',"
+	    jsonvalue += "'ContinueStation':'"+ contistation+"',"
+	    jsonvalue = jsonvalue.substr(0, jsonvalue.length - 1);
+	    jsonvalue = '{' + jsonvalue + '}';
+	}
+	else {
+	    contistation = 0;
+	}
 	saveprefdata(jsondata, jsonvalue, contistation);
 }
 $('#btnSave').one("click", save)
+
+// swap preference numbers
+$('.prefRankByPP').each(function () {
+	$(this).data('val', $(this).val())
+})
+$('.prefRankByPP').change(function () {
+	preVal = $(this).data('val')
+	curVal = $(this).val()
+	b = false
+	ct = this
+	$('.prefRankByPP').each(function () {
+		swapVal = $(this).val()
+		if(swapVal == curVal && this != ct) {
+			$(this).val(preVal)
+			$(this).data('val', preVal)
+			b = true
+		}
+	})
+	if(!b) {
+		$(this).val(preVal)
+	} else {
+		$(this).data('val', $(this).val())
+    	}
+})
+
 ```
